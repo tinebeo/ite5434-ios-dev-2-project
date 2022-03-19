@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD2CF34827E5220500870775 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF34727E5220500870775 /* Product.swift */; };
+		AD2CF34A27E573A000870775 /* PreSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF34927E5739F00870775 /* PreSearchView.swift */; };
+		AD2CF34C27E57A9000870775 /* PostSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF34B27E57A9000870775 /* PostSearchView.swift */; };
+		AD2CF34E27E598D600870775 /* ItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2CF34D27E598D600870775 /* ItemDetailsView.swift */; };
 		AD2E231B27E4F90700538B6E /* RentToGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E231A27E4F90700538B6E /* RentToGoApp.swift */; };
 		AD2E231D27E4F90700538B6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E231C27E4F90700538B6E /* ContentView.swift */; };
 		AD2E231F27E4F90A00538B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD2E231E27E4F90A00538B6E /* Assets.xcassets */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD2CF34727E5220500870775 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		AD2CF34927E5739F00870775 /* PreSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreSearchView.swift; sourceTree = "<group>"; };
+		AD2CF34B27E57A9000870775 /* PostSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSearchView.swift; sourceTree = "<group>"; };
+		AD2CF34D27E598D600870775 /* ItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsView.swift; sourceTree = "<group>"; };
 		AD2E231727E4F90700538B6E /* RentToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RentToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2E231A27E4F90700538B6E /* RentToGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentToGoApp.swift; sourceTree = "<group>"; };
 		AD2E231C27E4F90700538B6E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 		AD2E232827E4F91F00538B6E /* models */ = {
 			isa = PBXGroup;
 			children = (
+				AD2CF34727E5220500870775 /* Product.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -99,6 +108,9 @@
 				AD2E233227E4FE8E00538B6E /* CartView.swift */,
 				AD2E233427E4FEE600538B6E /* MyItemsView.swift */,
 				AD2E233627E4FF1300538B6E /* AccountView.swift */,
+				AD2CF34927E5739F00870775 /* PreSearchView.swift */,
+				AD2CF34B27E57A9000870775 /* PostSearchView.swift */,
+				AD2CF34D27E598D600870775 /* ItemDetailsView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -177,8 +189,12 @@
 				AD2E233127E4FDB400538B6E /* HomeView.swift in Sources */,
 				AD2E231D27E4F90700538B6E /* ContentView.swift in Sources */,
 				AD2E233527E4FEE600538B6E /* MyItemsView.swift in Sources */,
+				AD2CF34A27E573A000870775 /* PreSearchView.swift in Sources */,
+				AD2CF34C27E57A9000870775 /* PostSearchView.swift in Sources */,
 				AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */,
 				AD2E231B27E4F90700538B6E /* RentToGoApp.swift in Sources */,
+				AD2CF34E27E598D600870775 /* ItemDetailsView.swift in Sources */,
+				AD2CF34827E5220500870775 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
