@@ -23,6 +23,10 @@
 		AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233227E4FE8E00538B6E /* CartView.swift */; };
 		AD2E233527E4FEE600538B6E /* MyItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233427E4FEE600538B6E /* MyItemsView.swift */; };
 		AD2E233727E4FF1300538B6E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233627E4FF1300538B6E /* AccountView.swift */; };
+		ECE3363A27E7E64000C9B0AD /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363927E7E64000C9B0AD /* CartItemView.swift */; };
+		ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */; };
+		ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */; };
+		ECE3364027E8293A00C9B0AD /* RentalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363F27E8293A00C9B0AD /* RentalConfirmationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		AD2E233227E4FE8E00538B6E /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		AD2E233427E4FEE600538B6E /* MyItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsView.swift; sourceTree = "<group>"; };
 		AD2E233627E4FF1300538B6E /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		ECE3363927E7E64000C9B0AD /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
+		ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHistoryView.swift; sourceTree = "<group>"; };
+		ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalSummaryView.swift; sourceTree = "<group>"; };
+		ECE3363F27E8293A00C9B0AD /* RentalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,13 +134,25 @@
 				105EB94827E71127009ADB25 /* AccountView */,
 				AD2E231C27E4F90700538B6E /* ContentView.swift */,
 				AD2E233027E4FDB300538B6E /* HomeView.swift */,
-				AD2E233227E4FE8E00538B6E /* CartView.swift */,
+				ECE3363827E7E61F00C9B0AD /* CartView */,
 				AD2E233427E4FEE600538B6E /* MyItemsView.swift */,
 				AD2CF34927E5739F00870775 /* PreSearchView.swift */,
 				AD2CF34B27E57A9000870775 /* PostSearchView.swift */,
 				AD2CF34D27E598D600870775 /* ItemDetailsView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		ECE3363827E7E61F00C9B0AD /* CartView */ = {
+			isa = PBXGroup;
+			children = (
+				AD2E233227E4FE8E00538B6E /* CartView.swift */,
+				ECE3363927E7E64000C9B0AD /* CartItemView.swift */,
+				ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */,
+				ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */,
+				ECE3363F27E8293A00C9B0AD /* RentalConfirmationView.swift */,
+			);
+			path = CartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,13 +228,17 @@
 				AD2E233727E4FF1300538B6E /* AccountView.swift in Sources */,
 				AD2E233127E4FDB400538B6E /* HomeView.swift in Sources */,
 				AD2E231D27E4F90700538B6E /* ContentView.swift in Sources */,
+				ECE3363A27E7E64000C9B0AD /* CartItemView.swift in Sources */,
 				105EB95027E7128B009ADB25 /* RegisterView.swift in Sources */,
+				ECE3364027E8293A00C9B0AD /* RentalConfirmationView.swift in Sources */,
 				AD2E233527E4FEE600538B6E /* MyItemsView.swift in Sources */,
 				AD2CF34A27E573A000870775 /* PreSearchView.swift in Sources */,
+				ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */,
 				AD2CF34C27E57A9000870775 /* PostSearchView.swift in Sources */,
 				105EB94C27E711B4009ADB25 /* EditAccountView.swift in Sources */,
 				105EB94A27E71155009ADB25 /* AccountDtlView.swift in Sources */,
 				AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */,
+				ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */,
 				AD2E231B27E4F90700538B6E /* RentToGoApp.swift in Sources */,
 				105EB94E27E71243009ADB25 /* LoginView.swift in Sources */,
 				AD2CF34E27E598D600870775 /* ItemDetailsView.swift in Sources */,
