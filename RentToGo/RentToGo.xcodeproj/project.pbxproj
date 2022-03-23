@@ -23,6 +23,9 @@
 		AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233227E4FE8E00538B6E /* CartView.swift */; };
 		AD2E233527E4FEE600538B6E /* MyItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233427E4FEE600538B6E /* MyItemsView.swift */; };
 		AD2E233727E4FF1300538B6E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233627E4FF1300538B6E /* AccountView.swift */; };
+		C50713AB27EAB916007573FA /* MyItemsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */; };
+		C50713AD27EAB92B007573FA /* MyItemsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AC27EAB92B007573FA /* MyItemsAddView.swift */; };
+		C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AE27EAB9D6007573FA /* MyItems.swift */; };
 		ECE3363A27E7E64000C9B0AD /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363927E7E64000C9B0AD /* CartItemView.swift */; };
 		ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */; };
 		ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */; };
@@ -47,6 +50,9 @@
 		AD2E233227E4FE8E00538B6E /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		AD2E233427E4FEE600538B6E /* MyItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsView.swift; sourceTree = "<group>"; };
 		AD2E233627E4FF1300538B6E /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsHistoryView.swift; sourceTree = "<group>"; };
+		C50713AC27EAB92B007573FA /* MyItemsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsAddView.swift; sourceTree = "<group>"; };
+		C50713AE27EAB9D6007573FA /* MyItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItems.swift; sourceTree = "<group>"; };
 		ECE3363927E7E64000C9B0AD /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHistoryView.swift; sourceTree = "<group>"; };
 		ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalSummaryView.swift; sourceTree = "<group>"; };
@@ -135,12 +141,23 @@
 				AD2E231C27E4F90700538B6E /* ContentView.swift */,
 				AD2E233027E4FDB300538B6E /* HomeView.swift */,
 				ECE3363827E7E61F00C9B0AD /* CartView */,
-				AD2E233427E4FEE600538B6E /* MyItemsView.swift */,
+				C50713A927EAB12E007573FA /* MyItemsView */,
 				AD2CF34927E5739F00870775 /* PreSearchView.swift */,
 				AD2CF34B27E57A9000870775 /* PostSearchView.swift */,
 				AD2CF34D27E598D600870775 /* ItemDetailsView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		C50713A927EAB12E007573FA /* MyItemsView */ = {
+			isa = PBXGroup;
+			children = (
+				AD2E233427E4FEE600538B6E /* MyItemsView.swift */,
+				C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */,
+				C50713AC27EAB92B007573FA /* MyItemsAddView.swift */,
+				C50713AE27EAB9D6007573FA /* MyItems.swift */,
+			);
+			path = MyItemsView;
 			sourceTree = "<group>";
 		};
 		ECE3363827E7E61F00C9B0AD /* CartView */ = {
@@ -226,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2E233727E4FF1300538B6E /* AccountView.swift in Sources */,
+				C50713AB27EAB916007573FA /* MyItemsHistoryView.swift in Sources */,
 				AD2E233127E4FDB400538B6E /* HomeView.swift in Sources */,
 				AD2E231D27E4F90700538B6E /* ContentView.swift in Sources */,
 				ECE3363A27E7E64000C9B0AD /* CartItemView.swift in Sources */,
@@ -237,12 +255,14 @@
 				AD2CF34C27E57A9000870775 /* PostSearchView.swift in Sources */,
 				105EB94C27E711B4009ADB25 /* EditAccountView.swift in Sources */,
 				105EB94A27E71155009ADB25 /* AccountDtlView.swift in Sources */,
+				C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */,
 				AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */,
 				ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */,
 				AD2E231B27E4F90700538B6E /* RentToGoApp.swift in Sources */,
 				105EB94E27E71243009ADB25 /* LoginView.swift in Sources */,
 				AD2CF34E27E598D600870775 /* ItemDetailsView.swift in Sources */,
 				AD2CF34827E5220500870775 /* Product.swift in Sources */,
+				C50713AD27EAB92B007573FA /* MyItemsAddView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

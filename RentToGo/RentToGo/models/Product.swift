@@ -14,12 +14,14 @@ struct Product : Identifiable, Hashable  {
     var price : Double
     var description : String
     var quantity : Int
+    var isReturned : Bool
     
-    init(_ name: String, _ price: Double, _ description: String, _ quantity: Int) {
+    init(_ name: String, _ price: Double, _ description: String, _ quantity: Int, _ isReturned: Bool) {
         self.name = name
         self.price = price
         self.description = description
         self.quantity = quantity
+        self.isReturned = isReturned
     }
     
 }
