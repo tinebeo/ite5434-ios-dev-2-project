@@ -10,12 +10,10 @@ import SwiftUI
 struct PreSearchView: View {
     
     @Binding var searchText: String
-    let searchHistory = ["History 1", "History 2", "History 3", "History 4", "History 5"]
+    
     let themeColor : Color = Color(UIColor(red: 0.79, green: 0.96, blue: 0.96, alpha: 1.00))
     
-    
     init(searchText: Binding<String>) {
-        UINavigationBar.appearance().backgroundColor = .orange
         self._searchText = .constant("")
     }
     
@@ -37,27 +35,52 @@ struct PreSearchView: View {
                 .border(Color.gray)
                 .cornerRadius(15)
                 .padding(10)
+                .padding(.top, 80)
                 .background(themeColor)
             
-            // Search history
-            List {
-                ForEach(searchHistory, id: \.self) { history in
-                    Button(history, action: {}).font(.system(size: 14))
-                }
-            }
-            .listStyle(.plain)
-        
+            
+            PreSearchHistoryView()
             
             Spacer()
-        }
+            
+                
+        }.edgesIgnoringSafeArea(.all)
         
         
         
     }
 }
 
+struct PreSearchHistoryView : View {
+    
+    let searchHistory = ["History 1", "History 2", "History 3", "History 4", "History 5"]
+    
+    var body : some View {
+        // Search history
+        List {
+            ForEach(searchHistory, id: \.self) { history in
+                NavigationLink(destination: PostSearchView(searchText: .constant(""))) {
+                    Button(history, action: {}).font(.system(size: 14))
+                }
+            }
+        }.listStyle(.plain)
+    }
+}
+
 struct PreSearchView_Previews: PreviewProvider {
     static var previews: some View {
         PreSearchView(searchText: .constant(""))
+        //PreSearchView()
+    }
+}
+
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
     }
 }

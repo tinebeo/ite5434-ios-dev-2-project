@@ -34,30 +34,13 @@ struct ItemDetailsView: View {
                     .border(Color.gray)
                     .cornerRadius(15)
                     .padding(10)
+                    .padding(.top, 80)
                     .background(themeColor)
                 
                 // Product details
+                ItemDetailsProductView()
                 
-                VStack(alignment: .leading) {
-                    
-                    Text("Product Name").font(.system(size: 20)).padding(.leading, 10)
-                    
-                    HStack {
-                        Spacer()
-                        Image("photoPlaceholder").resizable().scaledToFit().frame(width: 300.0, height: 300.0)
-                        Spacer()
-                    }
-                    
-                    Text("$XXX.XX").font(.system(size: 20)).padding(.leading, 10)
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.").font(.system(size: 14)).padding(.leading, 10)
-                    
-                    Spacer()
-                    Spacer()
-                    Spacer()
-                    
-                    
-                    
-                }
+                
             }.frame(
                 minWidth: 0,
                 maxWidth: .infinity,
@@ -66,6 +49,7 @@ struct ItemDetailsView: View {
                 alignment: .topLeading
             )
             
+            // Checkout
             Text("In stock/Out of stock status").padding(.leading, 10)
             HStack {
                 Spacer()
@@ -86,8 +70,33 @@ struct ItemDetailsView: View {
                 Spacer()
             }.frame(alignment: .bottom)
             
-        }
+        }.edgesIgnoringSafeArea(.top)
         
+    }
+}
+
+struct ItemDetailsProductView : View {
+    
+    var body: some View {
+        // Product Details
+        VStack(alignment: .leading) {
+            
+            Text("Product Name").font(.system(size: 20)).padding(.leading, 10)
+            
+            HStack {
+                Spacer()
+                Image("photoPlaceholder").resizable().scaledToFit().frame(width: 300.0, height: 300.0)
+                Spacer()
+            }
+            
+            Text("$XXX.XX").font(.system(size: 20)).padding(.leading, 10)
+            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.").font(.system(size: 14)).padding(.leading, 10)
+            
+            Spacer()
+            Spacer()
+            Spacer()
+            
+        }
     }
 }
 

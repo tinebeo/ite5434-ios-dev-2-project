@@ -82,6 +82,17 @@
 			path = AccountView;
 			sourceTree = "<group>";
 		};
+		AD2D238627EBFAAA004A780D /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				AD2CF34927E5739F00870775 /* PreSearchView.swift */,
+				AD2CF34B27E57A9000870775 /* PostSearchView.swift */,
+				AD2CF34D27E598D600870775 /* ItemDetailsView.swift */,
+				AD2E233027E4FDB300538B6E /* HomeView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
 		AD2E230E27E4F90700538B6E = {
 			isa = PBXGroup;
 			children = (
@@ -137,14 +148,11 @@
 		AD2E232B27E4F93D00538B6E /* views */ = {
 			isa = PBXGroup;
 			children = (
+				AD2D238627EBFAAA004A780D /* HomeView */,
 				105EB94827E71127009ADB25 /* AccountView */,
 				AD2E231C27E4F90700538B6E /* ContentView.swift */,
-				AD2E233027E4FDB300538B6E /* HomeView.swift */,
 				ECE3363827E7E61F00C9B0AD /* CartView */,
 				C50713A927EAB12E007573FA /* MyItemsView */,
-				AD2CF34927E5739F00870775 /* PreSearchView.swift */,
-				AD2CF34B27E57A9000870775 /* PostSearchView.swift */,
-				AD2CF34D27E598D600870775 /* ItemDetailsView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
