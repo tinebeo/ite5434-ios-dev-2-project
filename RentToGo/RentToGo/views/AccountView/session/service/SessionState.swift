@@ -36,7 +36,7 @@ final class SessionServiceImp: ObservableObject, SessionService {
     @Published var state: SessionState = .loggedOut
     @Published var userDetails: SessionUserDtl?
     
-    private(set)  var handler : AuthStateDidChangeListenerHandle?
+    private  var handler : AuthStateDidChangeListenerHandle?
    
     
     
@@ -79,14 +79,14 @@ private extension SessionServiceImp{
                 
                 guard let self = self,
                       let value = snapshot.value as? NSDictionary,
-                      let firstName = value[RegistrationKey.firstName.rawValue] as? String,
-                      let lastName = value[RegistrationKey.lastName.rawValue] as? String else {
+                      let firstNameValue = value[RegistrationKey.firstName.rawValue] as? String,
+                      let lastNameValue = value[RegistrationKey.lastName.rawValue] as? String else {
                       return
                     
                 }
                 
                 DispatchQueue.main.async {
-                    self.userDetails = SessionUserDtl(firstName: firstName, lastName: lastName)
+                    self.userDetails = SessionUserDtl(firstName: firstNameValue, lastName: lastNameValue)
                 }
             }
         

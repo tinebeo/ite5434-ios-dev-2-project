@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct AccountView: View {
+   
+    @EnvironmentObject var sessionService : SessionServiceImp
     var body: some View {
-        AccountDtlView()
+        AccountDtlView().environmentObject(sessionService)
     }
 }
 

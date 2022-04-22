@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct ContentView: View {
-    
+    @EnvironmentObject var sessionService : SessionServiceImp
     var body: some View {
 
         TabView {
