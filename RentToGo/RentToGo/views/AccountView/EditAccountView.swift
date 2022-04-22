@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditAccountView: View {
-   
+    @EnvironmentObject var sessionService : SessionServiceImp
     let themeColor : Color = Color(UIColor(red: 0.79, green: 0.96, blue: 0.96, alpha: 1.00))
     @State var goNextScreen = false
    //

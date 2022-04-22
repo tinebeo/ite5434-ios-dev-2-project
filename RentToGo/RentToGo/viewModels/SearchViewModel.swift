@@ -1,10 +1,3 @@
-//
-//  SearchViewModel.swift
-//  RentToGo
-//
-//  Created by Christine Ebeo on 2022-04-22.
-//
-
 import Foundation
 import Firebase
 import FirebaseFirestore
@@ -16,35 +9,35 @@ class SearchViewModel: ObservableObject {
     //@Published var searchItemSpecific = Product
     
     func addData(userId: String, searchString: String) {
-        
+
         // Get a reference to the database
         let db = Firestore.firestore()
-        
+
         // Add a document to a collection
         db.collection("search").addDocument(data: ["userId":userId, "searchString":searchString])
     }
-    
+
     func getData() {
         let db = Firestore.firestore()
 
         db.collection("search").getDocuments { snapshot, error in
             if error == nil {
-            
+
                 if let snapshot = snapshot {
-                    
+
                     // Update the list property in the main thread
                     DispatchQueue.main.async {
-                        
+
                         // Get all sea documents and create Todos
                         self.searches = snapshot.documents.map { d in
-                            
+
                             // Create a Todo item for each document returned
                             return Search(userId: d["userId"] as? String ?? "",
                                           searchString: d["searchString"] as? String ?? "")
                         }
                     }
-                    
-                    
+
+
                 }
             }
             else {
@@ -52,20 +45,20 @@ class SearchViewModel: ObservableObject {
             }
         }
     }
-    
+
     func getSearchResults(searchText : String) {
-        
+
         let db = Firestore.firestore()
         @Binding var searchText : String
-        
+
         db.collection("product").getDocuments { snapshot, error in
             if error == nil {
                 //No errors
                 if let snapshot = snapshot {
-                    
+
                     DispatchQueue.main.async {
                         self.searchResults = snapshot.documents.map { d in
-                            
+
                             //Create product for each document
                             return Product(d.documentID,
                                            d["name"] as? String ?? "",
@@ -80,12 +73,12 @@ class SearchViewModel: ObservableObject {
                     }
                 }
             } else {
-                
+
             }
         }
-        
+
     }
-    
+
     /*func getProductById(productId: String) {
         
         // Get a reference to the database
@@ -120,4 +113,3 @@ class SearchViewModel: ObservableObject {
         }
     }*/
 }
-

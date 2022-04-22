@@ -8,7 +8,7 @@
 import Foundation
 
 class Search : Identifiable {
-    
+
     var userId: String // user id
     var searchString : String // search text
     
