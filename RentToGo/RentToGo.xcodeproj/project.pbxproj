@@ -27,6 +27,8 @@
 		C50713AB27EAB916007573FA /* MyItemsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */; };
 		C50713AD27EAB92B007573FA /* MyItemsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AC27EAB92B007573FA /* MyItemsAddView.swift */; };
 		C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AE27EAB9D6007573FA /* MyItems.swift */; };
+		ECD1D2E7281250510045FD74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */; };
+		ECD1D2ED281251390045FD74 /* ProductDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2EC281251390045FD74 /* ProductDao.swift */; };
 		ECE3363A27E7E64000C9B0AD /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363927E7E64000C9B0AD /* CartItemView.swift */; };
 		ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */; };
 		ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */; };
@@ -57,6 +59,8 @@
 		C50713AE27EAB9D6007573FA /* MyItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItems.swift; sourceTree = "<group>"; };
 		C7856E9C4BB92A1AE134F497 /* Pods-RentToGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentToGo.release.xcconfig"; path = "Target Support Files/Pods-RentToGo/Pods-RentToGo.release.xcconfig"; sourceTree = "<group>"; };
 		CAB9FCE09402A98CCA94F220 /* Pods_RentToGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RentToGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "RentToGo/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		ECD1D2EC281251390045FD74 /* ProductDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDao.swift; sourceTree = "<group>"; };
 		ECE3363927E7E64000C9B0AD /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHistoryView.swift; sourceTree = "<group>"; };
 		ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalSummaryView.swift; sourceTree = "<group>"; };
@@ -93,7 +97,6 @@
 				002C34EEE235F936B88BAFB9 /* Pods-RentToGo.debug.xcconfig */,
 				C7856E9C4BB92A1AE134F497 /* Pods-RentToGo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -129,12 +132,14 @@
 		AD2E231927E4F90700538B6E /* RentToGo */ = {
 			isa = PBXGroup;
 			children = (
+				ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */,
 				AD2E232B27E4F93D00538B6E /* views */,
 				AD2E232A27E4F93000538B6E /* controllers */,
 				AD2E232827E4F91F00538B6E /* models */,
 				AD2E231A27E4F90700538B6E /* RentToGoApp.swift */,
 				AD2E231E27E4F90A00538B6E /* Assets.xcassets */,
 				AD2E232027E4F90A00538B6E /* Preview Content */,
+				ECD1D2EE2812513D0045FD74 /* dao */,
 			);
 			path = RentToGo;
 			sourceTree = "<group>";
@@ -183,6 +188,14 @@
 				C50713AE27EAB9D6007573FA /* MyItems.swift */,
 			);
 			path = MyItemsView;
+			sourceTree = "<group>";
+		};
+		ECD1D2EE2812513D0045FD74 /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				ECD1D2EC281251390045FD74 /* ProductDao.swift */,
+			);
+			path = dao;
 			sourceTree = "<group>";
 		};
 		ECE3363827E7E61F00C9B0AD /* CartView */ = {
@@ -265,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECD1D2E7281250510045FD74 /* GoogleService-Info.plist in Resources */,
 				AD2E232227E4F90A00538B6E /* Preview Assets.xcassets in Resources */,
 				AD2E231F27E4F90A00538B6E /* Assets.xcassets in Resources */,
 			);
@@ -329,6 +343,7 @@
 				AD2E233527E4FEE600538B6E /* MyItemsView.swift in Sources */,
 				AD2CF34A27E573A000870775 /* PreSearchView.swift in Sources */,
 				ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */,
+				ECD1D2ED281251390045FD74 /* ProductDao.swift in Sources */,
 				AD2CF34C27E57A9000870775 /* PostSearchView.swift in Sources */,
 				105EB94C27E711B4009ADB25 /* EditAccountView.swift in Sources */,
 				105EB94A27E71155009ADB25 /* AccountDtlView.swift in Sources */,
