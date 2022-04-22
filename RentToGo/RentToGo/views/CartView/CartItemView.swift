@@ -12,6 +12,7 @@ struct CartItemView: View {
     
         @EnvironmentObject private var cart: Cart
       @State private var isActive: Bool = false
+    
       
       private func startCheckout(completion: @escaping (String?) -> Void) {
          
@@ -40,18 +41,18 @@ struct CartItemView: View {
     
     var body: some View {
         VStack {
-            List(0..<4) { item in
+            
+            List(cart.items) { item in
                 Button(action: {
                     print("Result pressed")
                     
                 }) {
                     HStack {
-                        Image("photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
+                        Image("\(item.imageUrl)").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                         VStack(alignment: .leading) {
-                            Text("Product Name")
-                            Text("$XXX.XX")
-                            
-                            Text("Product Details").font(.system(size: 14))
+                            Text(item.name)
+                            Text("$\(item.price)")
+                            Text(item.description).font(.system(size: 14))
                         }
                     }
                 }
