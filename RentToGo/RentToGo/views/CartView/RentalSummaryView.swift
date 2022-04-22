@@ -7,9 +7,41 @@
 
 import Foundation
 import SwiftUI
+import Stripe
 
 struct RentalSummaryView: View {
     @State private var cardNumber: String = ""
+    @EnvironmentObject private var cart: Cart
+    @State private var message: String = ""
+    @State private var isSuccess: Bool = false
+    @State private var paymentMethodParams: STPPaymentMethodParams?
+    let paymentGatewayController = PaymentGatewayController()
+    
+    private func pay() {
+            
+            guard let clientSecret = PaymentConfig.shared.paymentIntentClientSecret else {
+                return
+            }
+            
+            let paymentIntentParams = STPPaymentIntentParams(clientSecret: clientSecret)
+            paymentIntentParams.paymentMethodParams = paymentMethodParams
+            
+            paymentGatewayController.submitPayment(intent: paymentIntentParams) { status, intent, error in
+                
+                switch status {
+                    case .failed:
+                        message = "Failed"
+                    case .canceled:
+                        message = "Cancelled"
+                    case .succeeded:
+                        message = "Your payment has been successfully completed!"
+                        isSuccess = true
+                }
+                
+            }
+            
+        }
+    
     
     var body: some View {
         ScrollView {
@@ -41,38 +73,39 @@ struct RentalSummaryView: View {
                 }
                 Spacer()
                 Spacer()
-                Text("Total Price")
-                VStack(alignment: .leading, spacing: 20) {
-                    VStack {
-                        Text("Card Number")
-                        TextField("Card Number", text: self.$cardNumber)
-                            .frame(width: 380, height: 60, alignment: .leading).background(Color(red: 243/255, green: 243/255, blue: 243/255))
-                    }
-                    VStack {
-                        HStack(spacing:24) {
-                            VStack {
-                                Text("Valid Until")
-                                TextField("Valid Until", text: self.$cardNumber)
-                                    .frame(width: 178, height: 60, alignment: .leading).background(Color(red: 243/255, green: 243/255, blue: 243/255))
-                            }
-                            VStack {
-                                Text("CVV")
-                                TextField("CVV", text: self.$cardNumber)
-                                    .frame(width: 178, height: 60, alignment: .leading).background(Color(red: 243/255, green: 243/255, blue: 243/255))
-                            }
-                        }
-                    }
-                    VStack {
-                        Text("Card holder")
-                        TextField("Card holder", text: self.$cardNumber)
-                            .frame(width: 380, height: 60, alignment: .leading).background(Color(red: 243/255, green: 243/255, blue: 243/255))
-                    }
-                }
+                HStack {
+                                    Spacer()
+                    Text("Total \(cart.cartTotal)")
+                                    Spacer()
+                                }
+                                
+                                Section {
+                                    // Stripe Credit Card TextField Here
+                                    STPPaymentCardTextField.Representable.init(paymentMethodParams: $paymentMethodParams)
+                                } header: {
+                                    Text("Payment Information")
+                                }
+                                
+                                HStack {
+                                    Spacer()
+                                    Button("Pay") {
+                                        pay()
+                                    }.buttonStyle(.plain)
+                                    Spacer()
+                                }
+                                
+                                
                 
-                NavigationLink(destination: RentalConfirmationView()) {
-                    Image("paynowBtn")
-                }
+                
+               
             }).padding(CGFloat(40))
+            Text(message)
+                .font(.headline)
+            NavigationLink(isActive: $isSuccess, destination: {
+                           RentalConfirmationView()
+                       }, label: {
+                           EmptyView()
+                       })
         }
         
     }

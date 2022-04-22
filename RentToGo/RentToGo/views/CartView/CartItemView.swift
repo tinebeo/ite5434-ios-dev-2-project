@@ -10,6 +10,33 @@ import SwiftUI
 
 struct CartItemView: View {
     
+        @EnvironmentObject private var cart: Cart
+      @State private var isActive: Bool = false
+      
+      private func startCheckout(completion: @escaping (String?) -> Void) {
+         
+          let url = URL(string: "https://android-rentogo.herokuapp.com/create-payment-intent")!
+
+          var request = URLRequest(url: url)
+          request.httpMethod = "POST"
+          request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+          request.httpBody = try! JSONEncoder().encode(cart.items)
+          
+          URLSession.shared.dataTask(with: request) { data, response, error in
+                  
+              guard let data = data, error == nil,
+                    (response as? HTTPURLResponse)?.statusCode == 200
+              else {
+                  completion(nil)
+                  return
+              }
+              
+              let checkoutIntentResponse = try? JSONDecoder().decode(CheckoutIntentResponse.self, from: data)
+              completion(checkoutIntentResponse?.clientSecret)
+
+          }.resume()
+          
+      }
     
     var body: some View {
         VStack {
@@ -33,9 +60,24 @@ struct CartItemView: View {
             .listStyle(.plain)
             Spacer()
         
-            NavigationLink(destination: RentalSummaryView()) {
-                Image("checkoutBtn")
-            }
+//            NavigationLink(destination: RentalSummaryView()) {
+//                Image("checkoutBtn")
+//            }
+//
+            NavigationLink(isActive: $isActive) {
+                               RentalSummaryView()
+                           } label: {
+                               Button("Checkout") {
+                                   startCheckout { clientSecret in
+                                       cart.addToCart(Product("tim", 2, "tim", 2, true, owner: "tim", "tim"))
+                                       PaymentConfig.shared.paymentIntentClientSecret = clientSecret
+                                       
+                                       DispatchQueue.main.async {
+                                           isActive = true
+                                       }
+                                   }
+                               }
+                           }
             
             Spacer()
         }

@@ -30,6 +30,10 @@
 		C538CAB62812584C00605CE0 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538CAB52812584C00605CE0 /* ProductViewModel.swift */; };
 		ECD1D2E7281250510045FD74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */; };
 		ECD1D2ED281251390045FD74 /* ProductDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2EC281251390045FD74 /* ProductDao.swift */; };
+		ECD1D2F0281255BA0045FD74 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2EF281255BA0045FD74 /* Cart.swift */; };
+		ECD1D2F2281256490045FD74 /* CheckoutIntentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2F1281256490045FD74 /* CheckoutIntentResponse.swift */; };
+		ECD1D2F4281257BF0045FD74 /* PaymentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2F3281257BF0045FD74 /* PaymentConfig.swift */; };
+		ECD1D2F628125BDD0045FD74 /* PaymentGatewayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2F528125BDD0045FD74 /* PaymentGatewayController.swift */; };
 		ECE3363A27E7E64000C9B0AD /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363927E7E64000C9B0AD /* CartItemView.swift */; };
 		ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */; };
 		ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */; };
@@ -63,6 +67,10 @@
 		CAB9FCE09402A98CCA94F220 /* Pods_RentToGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RentToGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "RentToGo/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		ECD1D2EC281251390045FD74 /* ProductDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDao.swift; sourceTree = "<group>"; };
+		ECD1D2EF281255BA0045FD74 /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		ECD1D2F1281256490045FD74 /* CheckoutIntentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutIntentResponse.swift; sourceTree = "<group>"; };
+		ECD1D2F3281257BF0045FD74 /* PaymentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
+		ECD1D2F528125BDD0045FD74 /* PaymentGatewayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentGatewayController.swift; sourceTree = "<group>"; };
 		ECE3363927E7E64000C9B0AD /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHistoryView.swift; sourceTree = "<group>"; };
 		ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalSummaryView.swift; sourceTree = "<group>"; };
@@ -159,6 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				AD2CF34727E5220500870775 /* Product.swift */,
+				ECD1D2EF281255BA0045FD74 /* Cart.swift */,
+				ECD1D2F1281256490045FD74 /* CheckoutIntentResponse.swift */,
+				ECD1D2F3281257BF0045FD74 /* PaymentConfig.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 				ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */,
 				ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */,
 				ECE3363F27E8293A00C9B0AD /* RentalConfirmationView.swift */,
+				ECD1D2F528125BDD0045FD74 /* PaymentGatewayController.swift */,
 			);
 			path = CartView;
 			sourceTree = "<group>";
@@ -357,6 +369,8 @@
 				ECE3363C27E7E69600C9B0AD /* CartHistoryView.swift in Sources */,
 				ECD1D2ED281251390045FD74 /* ProductDao.swift in Sources */,
 				AD2CF34C27E57A9000870775 /* PostSearchView.swift in Sources */,
+				ECD1D2F0281255BA0045FD74 /* Cart.swift in Sources */,
+				ECD1D2F628125BDD0045FD74 /* PaymentGatewayController.swift in Sources */,
 				105EB94C27E711B4009ADB25 /* EditAccountView.swift in Sources */,
 				105EB94A27E71155009ADB25 /* AccountDtlView.swift in Sources */,
 				C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */,
@@ -365,7 +379,9 @@
 				AD2E231B27E4F90700538B6E /* RentToGoApp.swift in Sources */,
 				105EB94E27E71243009ADB25 /* LoginView.swift in Sources */,
 				AD2CF34E27E598D600870775 /* ItemDetailsView.swift in Sources */,
+				ECD1D2F4281257BF0045FD74 /* PaymentConfig.swift in Sources */,
 				AD2CF34827E5220500870775 /* Product.swift in Sources */,
+				ECD1D2F2281256490045FD74 /* CheckoutIntentResponse.swift in Sources */,
 				C50713AD27EAB92B007573FA /* MyItemsAddView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
