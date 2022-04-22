@@ -30,7 +30,8 @@ struct HomeView: View {
                 ScrollView {
                     
                     // Search
-                    NavigationLink(destination: PreSearchView(searchText: .constant("")), tag: 1, selection: $isSearching) {
+                    //NavigationLink(destination: PreSearchView(searchText: .constant("")), tag: 1, selection: $isSearching) {
+                    NavigationLink(destination: PreSearchView(), tag: 1, selection: $isSearching) {
                         
                         Button(action: {
                             self.isSearching = 1

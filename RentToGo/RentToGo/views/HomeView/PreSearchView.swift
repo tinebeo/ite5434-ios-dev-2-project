@@ -9,24 +9,26 @@ import SwiftUI
 
 struct PreSearchView: View {
     
-    @Binding var searchText: String
+    @State var searchText: String = ""
+    @ObservedObject var model = SearchViewModel()
     
     let themeColor : Color = Color(UIColor(red: 0.79, green: 0.96, blue: 0.96, alpha: 1.00))
     
-    init(searchText: Binding<String>) {
+    /*init(searchText: Binding<String>) {
         self._searchText = .constant("")
-    }
+    }*/
     
     var body: some View {
         VStack {
             // Search bar
             // https://blckbirds.com/post/how-to-create-a-search-bar-with-swiftui/
-            ZStack {
+            
+                ZStack {
                 Rectangle().foregroundColor(.white)
                 HStack {
                     Image(systemName: "magnifyingglass")
                     //TextField("Search ..", text: nil)
-                    TextField("Search...", text: $searchText)
+                    TextField("", text: $searchText)
                 }
                 .foregroundColor(.gray)
                 .padding(.leading, 10)
@@ -39,6 +41,23 @@ struct PreSearchView: View {
                 .background(themeColor)
             
             
+            // navigate to post searches
+            NavigationLink(destination: PostSearchView(searchText: $searchText)) {
+                Button(action: {
+                    
+                    // Add search to search history
+                    if (searchText != "") {
+                        model.addData(userId: "christine", searchString: searchText)
+                    }
+
+                    
+                }, label: {
+                    Text("Search")
+                })
+                
+            }
+            
+            
             PreSearchHistoryView()
             
             Spacer()
@@ -46,22 +65,26 @@ struct PreSearchView: View {
                 
         }.edgesIgnoringSafeArea(.all)
         
-        
-        
     }
 }
 
 struct PreSearchHistoryView : View {
     
-    let searchHistory = ["History 1", "History 2", "History 3", "History 4", "History 5"]
+    //let searchHistory = ["History 1", "History 2", "History 3", "History 4", "History 5"]
+    
+    @ObservedObject var model = SearchViewModel()
+    
+    init() {
+        model.getData()
+    }
     
     var body : some View {
         // Search history
-        List {
-            ForEach(searchHistory, id: \.self) { history in
-                NavigationLink(destination: PostSearchView(searchText: .constant(""))) {
-                    Button(history, action: {}).font(.system(size: 14))
-                }
+
+        List (model.searches) { search in
+            
+            NavigationLink(destination: PostSearchView(searchText: .constant(search.searchString))) {
+                Button(search.searchString, action: {}).font(.system(size: 14))
             }
         }.listStyle(.plain)
     }
@@ -69,8 +92,8 @@ struct PreSearchHistoryView : View {
 
 struct PreSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        PreSearchView(searchText: .constant(""))
-        //PreSearchView()
+        //PreSearchView(searchText: .constant(""))
+        PreSearchView()
     }
 }
 

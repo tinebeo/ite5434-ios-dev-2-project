@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemDetailsView: View {
     
+    @Binding var productId: String
     @Binding var searchText: String
     let btnColor : Color = Color(UIColor(red: 1.0, green: 232.0 / 255.0, blue: 25.0 / 255.0, alpha: 1.0))
     let themeColor : Color = Color(UIColor(red: 0.79, green: 0.96, blue: 0.96, alpha: 1.00))
@@ -38,7 +39,7 @@ struct ItemDetailsView: View {
                     .background(themeColor)
                 
                 // Product details
-                ItemDetailsProductView()
+                ItemDetailsProductView(productId: $productId, searchText: $searchText)
                 
                 
             }.frame(
@@ -77,11 +78,40 @@ struct ItemDetailsView: View {
 
 struct ItemDetailsProductView : View {
     
+    @Binding var productId: String
+    @Binding var searchText: String
+    
+    @ObservedObject var model = SearchViewModel()
+    
     var body: some View {
         // Product Details
         VStack(alignment: .leading) {
             
-            Text("Product Name").font(.system(size: 20)).padding(.leading, 10)
+           /* List {
+                //ForEach(searchHistory, id: \.self) { history in
+                ForEach(model.searchItemSpecific, id: \.self) { history in
+                    Text(searchText).font(.system(size: 20)).padding(.leading, 10)
+                    
+                    HStack {
+                        Spacer()
+                        Image("photoPlaceholder").data(url: history.imageUrl!).resizable().scaledToFit().frame(width: 300.0, height: 300.0)
+                        Spacer()
+                    }
+                    
+                    Text("\(String(format: "%.1f", history.price))").font(.system(size: 20)).padding(.leading, 10)
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.").font(.system(size: 14)).padding(.leading, 10)
+                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                }
+        
+                
+            }
+            .listStyle(.plain)
+            .onAppear{model.getSearchResults(searchText: searchText)}*/
+            
+            Text(searchText).font(.system(size: 20)).padding(.leading, 10)
             
             HStack {
                 Spacer()
@@ -89,7 +119,7 @@ struct ItemDetailsProductView : View {
                 Spacer()
             }
             
-            Text("$XXX.XX").font(.system(size: 20)).padding(.leading, 10)
+            Text("$XXX").font(.system(size: 20)).padding(.leading, 10)
             Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.").font(.system(size: 14)).padding(.leading, 10)
             
             Spacer()
@@ -97,11 +127,12 @@ struct ItemDetailsProductView : View {
             Spacer()
             
         }
+        //.onAppear{model.getProductById(productId: productId)}
     }
 }
 
 struct ItemDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemDetailsView(searchText: .constant(""))
+        ItemDetailsView(productId: .constant(""), searchText: .constant(""))
     }
 }

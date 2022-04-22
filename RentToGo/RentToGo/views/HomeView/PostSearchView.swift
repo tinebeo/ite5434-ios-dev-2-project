@@ -36,7 +36,7 @@ struct PostSearchView: View {
             
             Text("Results").font(.system(size: 20)).padding(.leading, 10)
             
-            PostSearchHistoryView()
+            PostSearchHistoryView(searchText: $searchText)
             
             Spacer()
             
@@ -48,23 +48,27 @@ struct PostSearchView: View {
 struct PostSearchHistoryView : View {
     
     let searchHistory = ["1", "2", "3", "4", "5"]
+    @Binding var searchText: String
+    
+    @ObservedObject var model = SearchViewModel()
     
     var body: some View {
         // Search history
         List {
-            ForEach(searchHistory, id: \.self) { history in
-                NavigationLink(destination: ItemDetailsView(searchText: .constant(""))) {
+            //ForEach(searchHistory, id: \.self) { history in
+            ForEach(model.searchResults, id: \.self) { history in
+                NavigationLink(destination: ItemDetailsView(productId: .constant(history.id), searchText: $searchText)) {
                     Button(action: {
                         print("Result pressed")
                         
                     }) {
                         HStack {
-                            Image("photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 130.0)
+                            Image("photoPlaceholder").data(url: history.imageUrl!).resizable().scaledToFit().frame(width: 100.0, height: 130.0)
                             VStack(alignment: .leading) {
-                                Text("Product Name \(history)")
-                                Text("$XXX.XX")
+                                Text("\(history.name)")
+                                Text("\(String(format: "%.1f", history.price))")
                                 
-                                Text("Product Details").font(.system(size: 14))
+                                Text(history.description).font(.system(size: 14))
                             }
                         }
                     }
@@ -74,6 +78,7 @@ struct PostSearchHistoryView : View {
             
         }
         .listStyle(.plain)
+        .onAppear{model.getSearchResults(searchText: searchText)}
     }
 }
 

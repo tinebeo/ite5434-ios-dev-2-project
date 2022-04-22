@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class Search : Identifiable {
+    
+    var userId: String // user id
+    var searchString : String // search text
+    
+    init(userId : String, searchString : String) {
+        self.userId = userId
+        self.searchString = searchString
+    }
+}
