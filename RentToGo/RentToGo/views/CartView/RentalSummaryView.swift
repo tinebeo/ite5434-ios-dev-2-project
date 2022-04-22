@@ -16,6 +16,10 @@ struct RentalSummaryView: View {
     @State private var isSuccess: Bool = false
     @State private var paymentMethodParams: STPPaymentMethodParams?
     let paymentGatewayController = PaymentGatewayController()
+    let today = Date()
+    let dateFormatter = DateFormatter()
+    @State private var dropOffDate = Date()
+    @State private var address: String = ""
     
     private func pay() {
             
@@ -49,33 +53,33 @@ struct RentalSummaryView: View {
                 HStack {
                     Text("Pickup date")
                     Spacer()
-                    Text("MM/DD/YYYY HH:MM")
+                    Text("\(Calendar.current.date(byAdding: .day, value: 3, to: today)!)")
                 }
                 HStack {
-                    Text("Drop off date")
-                    Spacer()
-                    Text("MM/DD/YYYY HH:MM")
+                    DatePicker(selection: $dropOffDate, in: ...Date(), displayedComponents: .date) {
+                                   Text("Select a drop off date")
+                               }
                 }
                 HStack {
                     Text("Address")
                     Spacer()
-                    Text("123 Street, City, Province, Postal")
+                    TextField("Address", text: $address)
                 }
                 HStack {
                     Text("Subtotal")
                     Spacer()
-                    Text("$XXX.XX")
+                    Text("$\((round(cart.cartTotal * 100) / 100.0))")
                 }
                 HStack {
-                    Text("Tax")
+                    Text("Fee")
                     Spacer()
-                    Text("$XX.X")
+                    Text("$1.35")
                 }
                 Spacer()
                 Spacer()
                 HStack {
                                     Spacer()
-                    Text("Total \(cart.cartTotal)")
+                    Text("Total \((cart.cartTotal + 1.35))")
                                     Spacer()
                                 }
                                 
@@ -90,7 +94,7 @@ struct RentalSummaryView: View {
                                     Spacer()
                                     Button("Pay") {
                                         pay()
-                                    }.buttonStyle(.plain)
+                                    }.buttonStyle(.automatic)
                                     Spacer()
                                 }
                                 
