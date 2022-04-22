@@ -9,8 +9,11 @@ import Foundation
 import SwiftUI
 
 struct RentalConfirmationView: View {
-    @State private var cardNumber: String = ""
     
+    @State private var cardNumber: String = ""
+    @EnvironmentObject private var cart: Cart
+
+
     var body: some View {
         ScrollView {
         
@@ -22,9 +25,10 @@ struct RentalConfirmationView: View {
                 Text("Thank you for renting, XXXXXX!")
                 Text("Remember to pick up and drop off on time!")
                 Spacer()
-                NavigationLink("Review Order History", destination: CartHistoryView())
                 NavigationLink("Keep Renting", destination: CartView())
             })
+        }.onAppear {
+            cart.deleteCart()
         }
         
     }
