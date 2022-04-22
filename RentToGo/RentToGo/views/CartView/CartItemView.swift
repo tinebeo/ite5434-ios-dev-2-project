@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 struct CartItemView: View {
     
@@ -70,26 +71,39 @@ struct CartItemView: View {
 //            NavigationLink(destination: RentalSummaryView()) {
 //                Image("checkoutBtn")
 //            }
-//
-            NavigationLink(isActive: $isActive) {
-                               RentalSummaryView()
-                           } label: {
-                               Button {
-                                   startCheckout { clientSecret in
-                                       cart.addToCart(Product("tim", "tim", 2, "tim", 2, false, owner: "tim", "tim", "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc="))
-                                       PaymentConfig.shared.paymentIntentClientSecret = clientSecret
-                                       
-                                       DispatchQueue.main.async {
-                                           isActive = true
+            
+            if Auth.auth().currentUser != nil {
+                NavigationLink(isActive: $isActive) {
+                                   RentalSummaryView()
+                               } label: {
+                                   Button {
+                                       startCheckout { clientSecret in
+                                           
+                                           PaymentConfig.shared.paymentIntentClientSecret = clientSecret
+                                           
+                                           DispatchQueue.main.async {
+                                               isActive = true
+                                           }
                                        }
+
+                                   } label: {
+                                       Image("checkoutBtn")
                                    }
 
-                               } label: {
-                                   Image("checkoutBtn")
+                                   
                                }
+            } else {
+                NavigationLink(destination: LoginView()) {
+                    Button {
+                        print("No user")
+                    } label: {
+                        Image("checkoutBtn")
+                    }
 
-                               
-                           }
+                }
+            }
+//
+           
             
             Spacer()
         }

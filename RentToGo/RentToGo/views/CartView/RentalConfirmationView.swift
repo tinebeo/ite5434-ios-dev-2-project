@@ -7,11 +7,13 @@
 
 import Foundation
 import SwiftUI
+import FirebaseAuth
 
 struct RentalConfirmationView: View {
     
     @State private var cardNumber: String = ""
     @EnvironmentObject private var cart: Cart
+    let user = Auth.auth().currentUser
 
 
     var body: some View {
@@ -22,7 +24,7 @@ struct RentalConfirmationView: View {
                 Spacer()
                 Image("rentSign")
                 Spacer()
-                Text("Thank you for renting, XXXXXX!")
+                Text("Thank you for renting!")
                 Text("Remember to pick up and drop off on time!")
                 Spacer()
                 NavigationLink("Keep Renting", destination: CartView())

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct CartView: View {
     
@@ -13,11 +14,12 @@ struct CartView: View {
     @ObservedObject var model = PurchasedViewModel()
     @ObservedObject var model2 = ProductViewModel()
     var history = History()
+    let user = Auth.auth().currentUser
 
     func findAllPurchased() {
         
         for item in model.purchasedItems {
-                    if item.owner == "jack" {
+            if item.owner == user?.uid {
                         for ids in item.productIds {
                             for product in model2.products {
                                 if (product.id == ids) {

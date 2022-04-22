@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Stripe
+import FirebaseAuth
 
 struct RentalSummaryView: View {
     @State private var cardNumber: String = ""
@@ -22,6 +23,7 @@ struct RentalSummaryView: View {
     @State private var address: String = ""
     @ObservedObject var model = PurchasedViewModel()
     @StateObject var model2 = ProductViewModel()
+    let user = Auth.auth().currentUser
 
     
     private func pay() {
@@ -48,7 +50,7 @@ struct RentalSummaryView: View {
                             item.isRented = true
                             model2.addData(product: item)
                         }
-                        model.addData(purchasedItem: Purchased(id: UUID().uuidString, owner: "jack", productIds: productIds, address: address, totalPrice: cart.cartTotal, dropOffDate: dropOffDate))
+                    model.addData(purchasedItem: Purchased(id: UUID().uuidString, owner: user?.uid ?? "0", productIds: productIds, address: address, totalPrice: cart.cartTotal, dropOffDate: dropOffDate))
                         
                         isSuccess = true
                 }
