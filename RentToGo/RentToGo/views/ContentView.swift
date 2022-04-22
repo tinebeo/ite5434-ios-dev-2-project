@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    var cart = Cart()
     
     var body: some View {
 
@@ -38,6 +39,7 @@ struct ContentView: View {
             
             
         }
+        .environmentObject(cart)
     }
 }
 
