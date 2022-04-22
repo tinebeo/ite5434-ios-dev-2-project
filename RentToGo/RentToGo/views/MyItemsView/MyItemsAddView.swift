@@ -48,8 +48,8 @@ struct MyItemsAddView: View {
             }.padding([.trailing, .leading], 10)
             Spacer()
             Button{
-                let newProduct = Product(name, NSString(string: price).doubleValue, description, NSString(string: quantity).integerValue, false)
-                currentProducts.products.append(newProduct)
+//                let newProduct = Product(name, NSString(string: price).doubleValue, description, NSString(string: quantity).integerValue, false)
+//                currentProducts.products.append(newProduct)
                 name = ""
                 price = ""
                 description = ""

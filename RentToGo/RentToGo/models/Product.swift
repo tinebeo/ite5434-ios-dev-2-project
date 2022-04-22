@@ -14,19 +14,18 @@ struct Product : Identifiable, Hashable  {
     var description : String
     var quantity : Int
     var isReturned : Bool
-    //var owner : String?
-    //var category : String?
+    var owner : String?
+    var category : String?
     
     
-    init(_ name: String, _ price: Double, _ description: String, _ quantity: Int, _ isReturned: Bool) {
-        //_ owner : String?, _ category : String?
+    init(_ name: String, _ price: Double, _ description: String, _ quantity: Int, _ isReturned: Bool, owner : String?, _ category : String?) {
         self.name = name
         self.price = price
         self.description = description
         self.quantity = quantity
         self.isReturned = isReturned
-        //self.owner = owner
-        //self.category = category
+        self.owner = owner
+        self.category = category
         
     }
     
@@ -38,9 +37,9 @@ struct Product : Identifiable, Hashable  {
             "price": price,
             "description": description,
             "quantity": quantity,
-            "isReturned": false
-            //"owner": owner,
-            //"category" : category
+            "isReturned": false,
+            "owner": owner,
+            "category" : category
             
         ] as [String : Any]
         

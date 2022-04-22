@@ -9,23 +9,14 @@ import SwiftUI
 
 class HistoryProducts: ObservableObject {
     @Published var products: [Product] = [
-        Product("Bike", 200, "Very cool product", 1, false),
-        Product("Motorcycle", 2000, "The coolest bike", 1, true),
-        Product("Car", 300, "Very cool car", 1, false),
-        Product("Waterbike", 500, "The coolest bike", 1, true),
-        Product("Tricycle", 870, "Very cool tricycle", 1, false),
-        Product("Dirt bike", 900, "The coolest dirt bike", 1, true),
+        Product("Bike", 200, "Very cool product", 1, false, owner: "tim", "tim"),
+       
     ]
 }
 
 class CurrentProducts: ObservableObject {
     @Published var products: [Product] = [
-        Product("Computer", 200, "Very cool product", 1, false),
-        Product("Phone", 430, "The coolest phone", 1, true),
-        Product("Chair", 250, "Very cool chair", 1, false),
-        Product("Table", 100, "The coolest table", 1, true),
-        Product("iPad", 60, "Very cool ipad", 1, false),
-        Product("Bed", 80, "The coolest bed", 1, true),
+        Product("Bike", 200, "Very cool product", 1, false, owner: "tim", "tim"),
     ]
 }
 

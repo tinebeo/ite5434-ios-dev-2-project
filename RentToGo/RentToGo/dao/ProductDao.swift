@@ -24,7 +24,7 @@ class ProductDao {
             "test": "hello"
         ])*/
         
-        addProduct(Product("test", 2.0, "test desc", 1, true))
+        addProduct(Product("tim", 2, "tim", 2, true, owner: "tim", "tim"))
     }
     
     func addProduct(_ product: Product){
