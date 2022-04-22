@@ -22,6 +22,20 @@ struct Product : Identifiable, Hashable  {
         self.description = description
         self.quantity = quantity
         self.isReturned = isReturned
+        
+    }
+    
+    func getDictionary() -> Dictionary<String, Any> {
+        
+        var dict = [
+            "name": name,
+            "price": price,
+            "description": description,
+            "quantity": quantity,
+            "isReturned": false
+        ] as [String : Any]
+        
+        return dict
     }
     
 }
