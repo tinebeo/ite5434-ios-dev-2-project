@@ -25,7 +25,7 @@ struct MyItems: View {
                         }
                         Spacer()
                         Button {
-                            
+                            model.deleteData(productToDelete: product.wrappedValue)
                         } label: {
                             Image("deleteBtn")
                         }

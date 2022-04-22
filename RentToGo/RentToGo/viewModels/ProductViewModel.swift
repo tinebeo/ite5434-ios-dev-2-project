@@ -12,9 +12,24 @@ import FirebaseFirestore
 class ProductViewModel: ObservableObject {
     @Published var products = [Product]()
     
-    func addData(_ name: String, _ category: String, _ description: String, _ owner: String, isRented: Bool, price: Double, quantity: Int, _ imageURL: String) {
+    func deleteData(productToDelete: Product) {
         let db = Firestore.firestore()
-        db.collection("product").addDocument(data: ["name": name, "category": category, "description": description, "owner": owner, "isRented": isRented, "price": price, "quantity": quantity, "imageURL": imageURL]) { error in
+        db.collection("product").document(productToDelete.id).delete { error in
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.products.removeAll{ product in
+                        return product.id == productToDelete.id
+                    }
+                }
+            } else {
+                
+            }
+        }
+    }
+    
+    func addData(product: Product) {
+        let db = Firestore.firestore()
+        db.collection("product").addDocument(data: ["name": product.name, "category": product.category, "description": product.description, "owner": product.owner, "isRented": product.isRented, "price": product.price, "quantity": product.quantity, "imageUrl": product.imageUrl]) { error in
             if error == nil {
                 self.getData()
             } else {

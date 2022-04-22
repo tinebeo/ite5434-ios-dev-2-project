@@ -28,7 +28,7 @@ struct MyItemsView: View {
         ZStack(alignment: .top) {
             TabView(selection: self.$currentTab) {
                 MyItems().environmentObject(model).tag(0)
-                MyItemsHistoryView().tag(1)
+                MyItemsHistoryView().environmentObject(model).tag(1)
                 MyItemsAddView().environmentObject(model).tag(2)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
