@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct HomeView: View {
     
     let themeColor : Color = Color(UIColor(red: 0.79, green: 0.96, blue: 0.96, alpha: 1.00))
     
     @State var isSearching: Int? = nil
-
+    
+    @StateObject var homeModel = ProductViewModel()
+    //@EnvironmentObject var homeProducts: ProductViewModel
+    
+    /*init() {
+        model.getData()
+    }*/
+    
     var body: some View {
         
         NavigationView {
@@ -44,20 +52,32 @@ struct HomeView: View {
                     }
                     
                     RentOfTheDayView()
-                    EssentialView()
+                    //RentOfTheDayView().environmentObject(homeModel)
+                    
+                    // Top Essentials
+                    EssentialView().environmentObject(homeModel)
                     CategoriesView()
                 }
                 .background(themeColor)
                 .edgesIgnoringSafeArea(.top)
+                .onAppear{homeModel.getData()}
                 
-            }.navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
+            
             
         }
         
     }
+    
+    
 }
 
 struct RentOfTheDayView: View {
+    //@EnvironmentObject var model: ProductViewModel
+    
+    //@Binding var products : [Product]
+    
     
     var body: some View {
         
@@ -78,10 +98,13 @@ struct RentOfTheDayView: View {
             }
             
             Text("$XXX.XX").font(.system(size: 24)).padding(.leading, 10)
-            Text("Item name").padding(.bottom).padding(.leading, 10)
+            Text("name").padding(.bottom).padding(.leading, 10)
             
         }
         .background(Color.white)
+        
+        
+        
         
     }
 }
@@ -89,14 +112,22 @@ struct RentOfTheDayView: View {
 struct EssentialView: View {
     
     @State var label: String = "Essential Name"
+    @EnvironmentObject var homeModel: ProductViewModel
+    
     
     var body: some View {
         // Top Essentials
         VStack(alignment: .leading) {
-            Text("Top Essentials").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
+            
+            List($homeModel.products) { product in
+                HStack{
+                    Text("\(product.name.wrappedValue) | \(product.category.wrappedValue ?? "")").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
+                    HomeHorizontalIconView(label: $label)
+                }
+            }
             
             
-            HomeHorizontalIconView(label: $label)
+            
         }
         .background(Color.white)
         
