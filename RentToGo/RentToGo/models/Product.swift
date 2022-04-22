@@ -13,19 +13,19 @@ struct Product : Identifiable, Hashable, Codable {
     var price : Double
     var description : String
     var quantity : Int
-    var isReturned : Bool
+    var isRented : Bool
     var owner : String?
     var category : String?
     var imageUrl : String?
 
     
-    init(_ id: String, _ name: String, _ price: Double, _ description: String, _ quantity: Int, _ isReturned: Bool, owner : String?, _ category : String?, _ imageUrl: String) {
+    init(_ id: String, _ name: String, _ price: Double, _ description: String, _ quantity: Int, _ isRented: Bool, owner : String?, _ category : String?, _ imageUrl: String) {
         self.id = id
         self.name = name
         self.price = price
         self.description = description
         self.quantity = quantity
-        self.isReturned = isReturned
+        self.isRented = isRented
         self.owner = owner
         self.category = category
         self.imageUrl = imageUrl
@@ -39,7 +39,7 @@ struct Product : Identifiable, Hashable, Codable {
             "price": price,
             "description": description,
             "quantity": quantity,
-            "isReturned": false,
+            "isRented": false,
             "owner": owner,
             "category" : category,
             "imageUrl": imageUrl

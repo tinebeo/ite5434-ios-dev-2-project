@@ -28,6 +28,7 @@
 		C50713AD27EAB92B007573FA /* MyItemsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AC27EAB92B007573FA /* MyItemsAddView.swift */; };
 		C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AE27EAB9D6007573FA /* MyItems.swift */; };
 		C538CAB62812584C00605CE0 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C538CAB52812584C00605CE0 /* ProductViewModel.swift */; };
+		C5D4423428129546001BFD9D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D4423328129546001BFD9D /* ImagePicker.swift */; };
 		ECD1D2E7281250510045FD74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */; };
 		ECD1D2ED281251390045FD74 /* ProductDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2EC281251390045FD74 /* ProductDao.swift */; };
 		ECD1D2F0281255BA0045FD74 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1D2EF281255BA0045FD74 /* Cart.swift */; };
@@ -63,6 +64,7 @@
 		C50713AC27EAB92B007573FA /* MyItemsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsAddView.swift; sourceTree = "<group>"; };
 		C50713AE27EAB9D6007573FA /* MyItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItems.swift; sourceTree = "<group>"; };
 		C538CAB52812584C00605CE0 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		C5D4423328129546001BFD9D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C7856E9C4BB92A1AE134F497 /* Pods-RentToGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentToGo.release.xcconfig"; path = "Target Support Files/Pods-RentToGo/Pods-RentToGo.release.xcconfig"; sourceTree = "<group>"; };
 		CAB9FCE09402A98CCA94F220 /* Pods_RentToGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RentToGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECD1D2E6281250510045FD74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "RentToGo/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -200,6 +202,7 @@
 				C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */,
 				C50713AC27EAB92B007573FA /* MyItemsAddView.swift */,
 				C50713AE27EAB9D6007573FA /* MyItems.swift */,
+				C5D4423328129546001BFD9D /* ImagePicker.swift */,
 			);
 			path = MyItemsView;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				ECD1D2F628125BDD0045FD74 /* PaymentGatewayController.swift in Sources */,
 				105EB94C27E711B4009ADB25 /* EditAccountView.swift in Sources */,
 				105EB94A27E71155009ADB25 /* AccountDtlView.swift in Sources */,
+				C5D4423428129546001BFD9D /* ImagePicker.swift in Sources */,
 				C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */,
 				AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */,
 				ECE3363E27E7F03B00C9B0AD /* RentalSummaryView.swift in Sources */,
