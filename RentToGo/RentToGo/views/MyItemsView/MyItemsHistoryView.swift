@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct MyItemsHistoryView: View {
-    @StateObject var historyProducts : HistoryProducts
-
-    @State var isReturned: Bool = false
+    @ObservedObject var model = ProductViewModel()
+    init() {
+        model.getData()
+    }
     
     var body: some View {
         VStack {
-            List($historyProducts.products) { product in
+            List($model.products) { product in
                 Button(action: {
                     print("Result pressed")
                 }) {
                     HStack {
-                        Image("photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
+                        Image("photoPlaceholder").data(url: product.imageUrl.wrappedValue!).resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                         VStack(alignment: .leading) {
-                            Text(product.name.wrappedValue)
-                            Text("\(String(format: "%.1f", product.price.wrappedValue))")
+                            Text("\(product.name.wrappedValue) | \(product.category.wrappedValue ?? "")")
+                            Text("\(String(format: "%.1f", product.price.wrappedValue))").font(.system(size: 14)).padding(.bottom, 1)
                             Text(product.description.wrappedValue).font(.system(size: 14))
                             LabeledCheckbox(isChecked: product.isReturned)
                         }

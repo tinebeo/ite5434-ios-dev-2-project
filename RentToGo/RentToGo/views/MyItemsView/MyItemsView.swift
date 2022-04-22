@@ -21,22 +21,21 @@ class CurrentProducts: ObservableObject {
 }
 
 struct MyItemsView: View {
-    @StateObject var currentProducts = CurrentProducts()
-    @StateObject var historyProducts = HistoryProducts()
     @State var currentTab: Int = 0
-    
+    @StateObject var model = ProductViewModel()
+
     var body: some View {
         ZStack(alignment: .top) {
             TabView(selection: self.$currentTab) {
-                MyItems().tag(0)
-                MyItemsHistoryView(historyProducts: historyProducts).tag(1)
-                MyItemsAddView(currentProducts: currentProducts).tag(2)
+                MyItems().environmentObject(model).tag(0)
+                MyItemsHistoryView().tag(1)
+                MyItemsAddView().environmentObject(model).tag(2)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .edgesIgnoringSafeArea(.all)
             
             ItemsTabBarView(currentTab: self.$currentTab)
-        }
+        }.onAppear{model.getData()}
     }
 }
 

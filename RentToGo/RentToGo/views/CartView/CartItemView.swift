@@ -69,7 +69,7 @@ struct CartItemView: View {
                            } label: {
                                Button("Checkout") {
                                    startCheckout { clientSecret in
-                                       cart.addToCart(Product("tim", "tim", 2, "tim", 2, false, owner: "tim", "tim", "tim"))
+                                       cart.addToCart(Product("tim", "tim", 2, "tim", 2, false, owner: "tim", "tim", "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc="))
                                        PaymentConfig.shared.paymentIntentClientSecret = clientSecret
                                        
                                        DispatchQueue.main.async {

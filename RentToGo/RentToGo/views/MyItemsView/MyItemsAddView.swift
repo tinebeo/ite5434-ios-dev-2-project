@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MyItemsAddView: View {
-    @StateObject var currentProducts : CurrentProducts
+    @EnvironmentObject var model: ProductViewModel
 
     @State var name : String = ""
+    @State var category : String = ""
     @State var price : String = ""
     @State var description : String = ""
     @State var quantity : String = ""
@@ -28,6 +29,11 @@ struct MyItemsAddView: View {
                 Text("Name")
                     .padding(.leading, 15)
                 TextField("Enter name", text: $name)
+                    .padding(15)
+                    .textFieldStyle(BottomLineTextFieldStyle())
+                Text("Category")
+                    .padding(.leading, 15)
+                TextField("Enter category", text: $category)
                     .padding(15)
                     .textFieldStyle(BottomLineTextFieldStyle())
                 Text("Price")
@@ -48,13 +54,12 @@ struct MyItemsAddView: View {
             }.padding([.trailing, .leading], 10)
             Spacer()
             Button{
-//                let newProduct = Product(name, NSString(string: price).doubleValue, description, NSString(string: quantity).integerValue, false)
-//                currentProducts.products.append(newProduct)
+                model.addData(name, category, description, "Max", isRented: false, price: Double(price) ?? 0, quantity: Int(quantity) ?? 0, "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=")
                 name = ""
+                category = ""
                 price = ""
                 description = ""
                 quantity = ""
-                showingAlert = true
             } label: {
                 Image("addItemBtn")
                     .resizable()
