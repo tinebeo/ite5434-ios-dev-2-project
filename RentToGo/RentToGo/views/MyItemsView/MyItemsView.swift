@@ -9,14 +9,14 @@ import SwiftUI
 
 class HistoryProducts: ObservableObject {
     @Published var products: [Product] = [
-        Product("Bike", 200, "Very cool product", 1, false, owner: "tim", "tim"),
+//        Product("Bike", 200, "Very cool product", 1, false, owner: "tim", "tim"),
        
     ]
 }
 
 class CurrentProducts: ObservableObject {
     @Published var products: [Product] = [
-        Product("Bike", 200, "Very cool product", 1, false, owner: "tim", "tim"),
+//        Product("Bike", 200, "Very cool product", 1, false, owner: "tim", "tim"),
     ]
 }
 
@@ -24,10 +24,11 @@ struct MyItemsView: View {
     @StateObject var currentProducts = CurrentProducts()
     @StateObject var historyProducts = HistoryProducts()
     @State var currentTab: Int = 0
+    
     var body: some View {
         ZStack(alignment: .top) {
             TabView(selection: self.$currentTab) {
-                MyItems(currentProducts: currentProducts).tag(0)
+                MyItems().tag(0)
                 MyItemsHistoryView(historyProducts: historyProducts).tag(1)
                 MyItemsAddView(currentProducts: currentProducts).tag(2)
             }

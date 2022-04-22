@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct MyItems: View {
-    @StateObject var currentProducts : CurrentProducts
-
+    @ObservedObject var model = ProductViewModel()
+    init() {
+        model.getData()
+    }
+    
     var body: some View {
         VStack {
-            List($currentProducts.products) { product in
+            List($model.products) { product in
                 Button(action: {
                     print("Result pressed")
                 }) {
@@ -25,9 +28,9 @@ struct MyItems: View {
                         }
                         Spacer()
                         Button {
-                            if let idx = currentProducts.products.firstIndex(where: { $0.id == product.wrappedValue.id }) {
-                                currentProducts.products.remove(at: idx)
-                            }
+//                            if let idx = currentProducts.products.firstIndex(where: { $0.id == product.wrappedValue.id }) {
+//                                currentProducts.products.remove(at: idx)
+//                            }
                         } label: {
                             Image("deleteBtn")
                         }
