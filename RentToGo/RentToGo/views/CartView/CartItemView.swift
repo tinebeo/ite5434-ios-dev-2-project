@@ -51,9 +51,15 @@ struct CartItemView: View {
                         Image("photoPlaceholder").data(url: item.imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                         VStack(alignment: .leading) {
                             Text(item.name)
-                            Text("$\(item.price)")
+                            Text("$" + "\(String(format: "%.1f", item.price))")
                             Text(item.description).font(.system(size: 14))
                         }
+                        Button {
+                            cart.deleteItem(item)
+                        } label: {
+                            Image("deleteBtn")
+                        }
+
                     }
                 }
                 
@@ -68,7 +74,7 @@ struct CartItemView: View {
             NavigationLink(isActive: $isActive) {
                                RentalSummaryView()
                            } label: {
-                               Button("Checkout") {
+                               Button {
                                    startCheckout { clientSecret in
                                        cart.addToCart(Product("tim", "tim", 2, "tim", 2, false, owner: "tim", "tim", "https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc="))
                                        PaymentConfig.shared.paymentIntentClientSecret = clientSecret
@@ -77,7 +83,12 @@ struct CartItemView: View {
                                            isActive = true
                                        }
                                    }
+
+                               } label: {
+                                   Image("checkoutBtn")
                                }
+
+                               
                            }
             
             Spacer()

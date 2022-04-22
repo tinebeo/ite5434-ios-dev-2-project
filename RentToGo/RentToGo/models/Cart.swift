@@ -28,4 +28,8 @@ class Cart: ObservableObject {
     func deleteCart() {
         items = [Product]()
     }
+    
+    func deleteItem(_ item: Product) {
+        items = items.filter({ $0 != item })
+    }
 }

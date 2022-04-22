@@ -41,21 +41,21 @@ struct PreSearchView: View {
                 .background(themeColor)
             
             
-            // navigate to post searches
-            NavigationLink(destination: PostSearchView(searchText: $searchText)) {
-                Button(action: {
-                    
-                    // Add search to search history
-                    if (searchText != "") {
-                        model.addData(userId: "christine", searchString: searchText)
-                    }
-
-                    
-                }, label: {
-                    Text("Search")
-                })
-                
-            }
+//            // navigate to post searches
+//            NavigationLink(destination: PostSearchView(searchText: $searchText)) {
+//                Button(action: {
+//
+//                    // Add search to search history
+//                    if (searchText != "") {
+//                        model.addData(userId: "christine", searchString: searchText)
+//                    }
+//
+//
+//                }, label: {
+//                    Text("Search")
+//                })
+//
+//            }
             
             
             PreSearchHistoryView()
@@ -83,7 +83,7 @@ struct PreSearchHistoryView : View {
 
         List (model.searches) { search in
             
-            NavigationLink(destination: PostSearchView(searchText: .constant(search.searchString))) {
+            NavigationLink(destination: PostSearchView(searchText: "")) {
                 Button(search.searchString, action: {}).font(.system(size: 14))
             }
         }.listStyle(.plain)

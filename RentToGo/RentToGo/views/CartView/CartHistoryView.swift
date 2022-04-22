@@ -41,7 +41,7 @@ struct CartHistoryView: View {
                         Image("photoPlaceholder").data(url: item.imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                         VStack(alignment: .leading) {
                             Text(item.name)
-                            Text("$\(item.price)")
+                            Text("$" + "\(String(format: "%.1f", item.price))")
                             
                             Text("\(item.description)").font(.system(size: 14))
                         }

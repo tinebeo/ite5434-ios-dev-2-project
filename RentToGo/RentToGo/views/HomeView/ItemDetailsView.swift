@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ItemDetailsView: View {
     
-    @Binding var productId: String
-    @Binding var searchText: String
+//    @Binding var productId: String
+//    @Binding var searchText: String
+    var product: Product
     let btnColor : Color = Color(UIColor(red: 1.0, green: 232.0 / 255.0, blue: 25.0 / 255.0, alpha: 1.0))
     let themeColor : Color = Color(UIColor(red: 0.79, green: 0.96, blue: 0.96, alpha: 1.00))
+    @EnvironmentObject private var cart: Cart
+    @State private var isActive: Bool = false
+  
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,7 +30,7 @@ struct ItemDetailsView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                         //TextField("Search ..", text: nil)
-                        TextField("Search...", text: $searchText)
+//                        TextField("Search...", text: $searchText)
                     }
                     .foregroundColor(.gray)
                     .padding(.leading, 10)
@@ -39,7 +43,7 @@ struct ItemDetailsView: View {
                     .background(themeColor)
                 
                 // Product details
-                ItemDetailsProductView(productId: $productId, searchText: $searchText)
+                ItemDetailsProductView(product: product)
                 
                 
             }.frame(
@@ -51,25 +55,54 @@ struct ItemDetailsView: View {
             )
             
             // Checkout
-            Text("In stock/Out of stock status").padding(.leading, 10)
-            HStack {
-                Spacer()
-                Button(action: {
-                        print("Add to cart tapped")
-                    }) {
-                        Text("Add to Cart")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .font(.system(size: 18))
-                            .padding()
-                            .foregroundColor(.black)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15).stroke(btnColor, lineWidth: 2)
-                        )
+            if (product.isRented == true) {
+                Text("Out of stock status").padding(.leading, 10)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                            cart.addToCart(product)
+                        }) {
+                            Text("Add to Cart")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .font(.system(size: 18))
+                                .padding()
+                                .foregroundColor(.black)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 15).stroke(btnColor, lineWidth: 2)
+                            )
+                        }
+                        .disabled(true)
+                        .background(Color.gray) // If you have this
+                        .cornerRadius(25)
+                    Spacer()
+                }.frame(alignment: .bottom)
+            } else {
+                Text("In stock").padding(.leading, 10)
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: CartItemView()) {
+                        Button(action: {
+                                cart.addToCart(product)
+                            
+                            }) {
+                                Text("Add to Cart")
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .font(.system(size: 18))
+                                    .padding()
+                                    .foregroundColor(.black)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15).stroke(btnColor, lineWidth: 2)
+                                )
+                            }
+                            .background(Color.yellow) // If you have this
+                            .cornerRadius(25)
                     }
-                    .background(Color.yellow) // If you have this
-                    .cornerRadius(25)
-                Spacer()
-            }.frame(alignment: .bottom)
+                    
+                    Spacer()
+                }.frame(alignment: .bottom)
+            }
+            
+            
             
         }.edgesIgnoringSafeArea(.top)
         
@@ -78,9 +111,10 @@ struct ItemDetailsView: View {
 
 struct ItemDetailsProductView : View {
     
-    @Binding var productId: String
-    @Binding var searchText: String
-    
+//    @Binding var productId: String
+//    @Binding var searchText: String
+    var product: Product
+
     @ObservedObject var model = SearchViewModel()
     
     var body: some View {
@@ -111,16 +145,16 @@ struct ItemDetailsProductView : View {
             .listStyle(.plain)
             .onAppear{model.getSearchResults(searchText: searchText)}*/
             
-            Text(searchText).font(.system(size: 20)).padding(.leading, 10)
-            
+//            Text(searchText).font(.system(size: 20)).padding(.leading, 10)
+//
             HStack {
                 Spacer()
-                Image("photoPlaceholder").resizable().scaledToFit().frame(width: 300.0, height: 300.0)
+                Image("photoPlaceholder").data(url: product.imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 300.0, height: 300.0)
+
                 Spacer()
             }
-            
-            Text("$XXX").font(.system(size: 20)).padding(.leading, 10)
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.").font(.system(size: 14)).padding(.leading, 10)
+            Text("$" + "\(String(format: "%.1f", product.price))").font(.system(size: 20)).padding(.leading, 10)
+            Text(product.description).font(.system(size: 14)).padding(.leading, 10)
             
             Spacer()
             Spacer()
@@ -133,6 +167,6 @@ struct ItemDetailsProductView : View {
 
 struct ItemDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemDetailsView(productId: .constant(""), searchText: .constant(""))
+        ItemDetailsView(product: Product("", "", 0, "", 0, true, owner: "", "", ""))
     }
 }

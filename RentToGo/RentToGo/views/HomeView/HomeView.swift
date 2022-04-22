@@ -15,7 +15,8 @@ struct HomeView: View {
     @State var isSearching: Int? = nil
     
     @StateObject var homeModel = ProductViewModel()
-    //@EnvironmentObject var homeProducts: ProductViewModel
+    
+    @ObservedObject private var viewModel = ProductViewModel()
     
     /*init() {
         model.getData()
@@ -52,16 +53,16 @@ struct HomeView: View {
                         .foregroundColor(.gray)
                     }
                     
-                    RentOfTheDayView()
+                    RentOfTheDayView().environmentObject(viewModel)
                     //RentOfTheDayView().environmentObject(homeModel)
                     
                     // Top Essentials
-                    EssentialView().environmentObject(homeModel)
-                    CategoriesView()
+                    EssentialView().environmentObject(viewModel)
+                    CategoriesView().environmentObject(viewModel)
                 }
                 .background(themeColor)
                 .edgesIgnoringSafeArea(.top)
-                .onAppear{homeModel.getData()}
+                .onAppear{viewModel.getData()}
                 
             }
             .navigationBarHidden(true)
@@ -75,10 +76,7 @@ struct HomeView: View {
 }
 
 struct RentOfTheDayView: View {
-    //@EnvironmentObject var model: ProductViewModel
-    
-    //@Binding var products : [Product]
-    
+    @EnvironmentObject var viewModel: ProductViewModel
     
     var body: some View {
         
@@ -89,20 +87,47 @@ struct RentOfTheDayView: View {
             
             HStack {
                 Spacer()
-                Button(action: {
-                    print("Rent of the day pressed")
-                    
-                }) {
-                    Image("photoPlaceholder").resizable().scaledToFit().frame(width: 150.0, height: 150.0)
+                if (self.viewModel.products.isEmpty) {
+                    Button {
+                        print("Hello")
+                    } label: {
+                        EmptyView()
+                    }
+
+                } else {
+                    NavigationLink(destination: ItemDetailsView(product: viewModel.products[0])) {
+                        if self.viewModel.products.isEmpty {
+                            Image("photoPlaceholder").resizable().scaledToFit().frame(width: 150.0, height: 150.0)
+                                    
+                                    } else {
+                                        Image("photoPlaceholder").data(url: viewModel.products[0].imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 150.0, height: 150.0)
+                                    }
+                    }
                 }
+                
+               
                 Spacer()
             }
+            if self.viewModel.products.isEmpty {
+                Text("$XXX.XX").font(.system(size: 24)).padding(.leading, 10)
+
+                        } else {
+                            Text("$" + "\(String(format: "%.1f", self.viewModel.products[0].price))").font(.system(size: 24)).padding(.leading, 10)
+                            
+                        }
             
-            Text("$XXX.XX").font(.system(size: 24)).padding(.leading, 10)
-            Text("name").padding(.bottom).padding(.leading, 10)
+            if self.viewModel.products.isEmpty {
+                            Text("NAME")
+
+                        } else {
+                            Text(self.viewModel.products[0].name)
+                        }
             
-        }
+        }.onAppear(perform: {
+            print(viewModel.products)
+        })
         .background(Color.white)
+    
         
         
         
@@ -113,19 +138,22 @@ struct RentOfTheDayView: View {
 struct EssentialView: View {
     
     @State var label: String = "Essential Name"
-    @EnvironmentObject var homeModel: ProductViewModel
-    
+    @EnvironmentObject var viewModel: ProductViewModel
     
     var body: some View {
         // Top Essentials
         VStack(alignment: .leading) {
-            
-            List($homeModel.products) { product in
-                HStack{
-                    Text("\(product.name.wrappedValue) | \(product.category.wrappedValue ?? "")").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
-                    HomeHorizontalIconView(label: $label)
+            if (viewModel.products.isEmpty) {
+                EmptyView()
+            } else {
+                List(viewModel.products) { product in
+                    HStack{
+                        Text("\(product.name) | \(product.category ?? "")").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
+                        HomeHorizontalIconView(label: $label)
+                    }
                 }
             }
+            
             
             
             
@@ -139,12 +167,13 @@ struct EssentialView: View {
 struct CategoriesView : View {
     
     @State var label: String = "Category Name"
+    @EnvironmentObject var viewModel: ProductViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("Categories").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
             
-            HomeHorizontalIconView(label: $label)
+            HomeHorizontalIconView(label: $label).environmentObject(viewModel)
             
         }
         .background(Color.white)
@@ -155,23 +184,23 @@ struct CategoriesView : View {
 struct HomeHorizontalIconView : View {
     
     @Binding var label: String
-    let icons = ["1", "2", "3", "4"]
+    let categories = [["Home", "https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/Articles/best-furniture-for-your-home-hero.jpg"],["Tech", "https://cdn.vox-cdn.com/thumbor/t-tqoncT0dIR_seOj5C6x4QWNYA=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13707075/akrales_190117_3163_0194.jpg"],["Tools", "https://nationaltoday.com/wp-content/uploads/2021/10/Worship-of-Tools-Day.jpg"]]
+    
+    @EnvironmentObject var viewModel: ProductViewModel
     
     var body: some View {
         
         ScrollView(.horizontal) {
             HStack {
                 // TODO this needs to loop through data
-                ForEach(icons, id: \.self) { icon in
+                ForEach(categories, id: \.self) { category in
                     VStack {
-                        Button(action: {
-                            print(label)
-                            
-                        }) {
-                            Image("photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
+                        NavigationLink(destination: PostSearchView(searchText: category[0]).environmentObject(viewModel)) {
+                            Image("photoPlaceholder").data(url: category[1] ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                                 .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1))
                         }
-                        Text(label).font(.system(size: 14))
+                       
+                        Text(category[0]).font(.system(size: 14))
                     }
                 }
                 

@@ -78,7 +78,7 @@ struct RentalSummaryView: View {
                 HStack {
                     Text("Subtotal")
                     Spacer()
-                    Text("$\((round(cart.cartTotal * 100) / 100.0))")
+                    Text("$" + "\(String(format: "%.1f", cart.cartTotal))")
                 }
                 HStack {
                     Text("Fee")
@@ -89,7 +89,7 @@ struct RentalSummaryView: View {
                 Spacer()
                 HStack {
                                     Spacer()
-                    Text("Total \((cart.cartTotal + 1.35))")
+                    Text("Total:$ \(String(format: "%.1f", (cart.cartTotal + 1.35)))")
                                     Spacer()
                                 }
                                 
