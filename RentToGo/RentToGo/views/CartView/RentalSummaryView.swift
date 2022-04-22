@@ -20,6 +20,9 @@ struct RentalSummaryView: View {
     let dateFormatter = DateFormatter()
     @State private var dropOffDate = Date()
     @State private var address: String = ""
+    @ObservedObject var model = PurchasedViewModel()
+    @StateObject var model2 = ProductViewModel()
+
     
     private func pay() {
             
@@ -39,13 +42,20 @@ struct RentalSummaryView: View {
                         message = "Cancelled"
                     case .succeeded:
                         message = "Your payment has been successfully completed!"
+                        var productIds = [String]()
+                        for var item in cart.items {
+                            productIds.append(item.id)
+                            item.isRented = true
+                            model2.addData(product: item)
+                        }
+                        model.addData(purchasedItem: Purchased(id: UUID().uuidString, owner: "jack", productIds: productIds, address: address, totalPrice: cart.cartTotal, dropOffDate: dropOffDate))
+                        
                         isSuccess = true
                 }
                 
             }
             
         }
-    
     
     var body: some View {
         ScrollView {
@@ -106,7 +116,7 @@ struct RentalSummaryView: View {
             Text(message)
                 .font(.headline)
             NavigationLink(isActive: $isSuccess, destination: {
-                           RentalConfirmationView()
+                    RentalConfirmationView().environmentObject(cart)
                        }, label: {
                            EmptyView()
                        })

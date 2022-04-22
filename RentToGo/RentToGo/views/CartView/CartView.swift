@@ -8,23 +8,49 @@
 import SwiftUI
 
 struct CartView: View {
+    
     @State var currenTab: Int = 0
+    @ObservedObject var model = PurchasedViewModel()
+    @ObservedObject var model2 = ProductViewModel()
+    var history = History()
+
+    func findAllPurchased() {
+        
+        for item in model.purchasedItems {
+                    if item.owner == "jack" {
+                        for ids in item.productIds {
+                            for product in model2.products {
+                                if (product.id == ids) {
+                                    history.addToTheHistory(product)
+                                }
+                            }
+                        }
+                    }
+                }
+    }
+    
     
     var body: some View {
 
         NavigationView {
             ZStack(alignment: .top) {
                 TabView(selection: self.$currenTab) {
-                            CartItemView().tag(0)
-                            CartHistoryView().tag(1)
+                        CartItemView().tag(0)
+                            CartHistoryView().environmentObject(history).tag(1)
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
                         .edgesIgnoringSafeArea(.all)
                         
                 TabBarView(currentTab: self.$currenTab)
                     }
+        }.onAppear{
+            model.getData()
+            model2.getData()
+            findAllPurchased()
         }
+        .navigationViewStyle(.stack)
     }
+    
 }
 
 struct TabBarView: View {

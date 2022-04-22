@@ -48,7 +48,7 @@ struct CartItemView: View {
                     
                 }) {
                     HStack {
-                        Image("\(item.imageUrl)").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
+                        Image("photoPlaceholder").data(url: item.imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                         VStack(alignment: .leading) {
                             Text(item.name)
                             Text("$\(item.price)")

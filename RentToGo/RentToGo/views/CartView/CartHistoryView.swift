@@ -9,21 +9,41 @@ import Foundation
 import SwiftUI
 
 struct CartHistoryView: View {
+    
+    @EnvironmentObject var items: History
+    
+//    var items = [Product]()
+//
+//    init() {
+//
+//        for item in model.purchasedItems {
+//            print(item)
+//            if item.owner == "jack" {
+//                for ids in item.productIds {
+//                    for product in model2.products {
+//                        if (product.id == ids) {
+//                            items.append(product)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     var body: some View {
         VStack {
             Spacer(minLength: 45)
-            List(0..<2) { item in
+            List(items.items.sorted(by: {$0.id < $1.id})) { item in
                 Button(action: {
                     print("Result pressed")
                     
                 }) {
                     HStack {
-                        Image("photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
+                        Image("photoPlaceholder").data(url: item.imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
                         VStack(alignment: .leading) {
-                            Text("Product Name")
-                            Text("$XXX.XX")
+                            Text(item.name)
+                            Text("$\(item.price)")
                             
-                            Text("Product Details").font(.system(size: 14))
+                            Text("\(item.description)").font(.system(size: 14))
                         }
                     }
                 }
@@ -33,6 +53,9 @@ struct CartHistoryView: View {
         
             
             Spacer()
+        }.onAppear {
+            print(items.items)
         }
     }
 }
+
