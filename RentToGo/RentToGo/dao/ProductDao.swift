@@ -23,7 +23,7 @@ class ProductDao {
     
     func addProduct(_ product: Product){
     
-        ref.childByAutoId().setValue(product.getDictionary())
+        ref.child(product.id).setValue(product.getDictionary())
     }
     
     
