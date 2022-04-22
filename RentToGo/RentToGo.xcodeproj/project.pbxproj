@@ -23,6 +23,7 @@
 		AD2E233327E4FE8E00538B6E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233227E4FE8E00538B6E /* CartView.swift */; };
 		AD2E233527E4FEE600538B6E /* MyItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233427E4FEE600538B6E /* MyItemsView.swift */; };
 		AD2E233727E4FF1300538B6E /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E233627E4FF1300538B6E /* AccountView.swift */; };
+		AECE724E5D38E0DBF373E419 /* Pods_RentToGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB9FCE09402A98CCA94F220 /* Pods_RentToGo.framework */; };
 		C50713AB27EAB916007573FA /* MyItemsHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */; };
 		C50713AD27EAB92B007573FA /* MyItemsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AC27EAB92B007573FA /* MyItemsAddView.swift */; };
 		C50713AF27EAB9D6007573FA /* MyItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50713AE27EAB9D6007573FA /* MyItems.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		002C34EEE235F936B88BAFB9 /* Pods-RentToGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentToGo.debug.xcconfig"; path = "Target Support Files/Pods-RentToGo/Pods-RentToGo.debug.xcconfig"; sourceTree = "<group>"; };
 		105EB94927E71154009ADB25 /* AccountDtlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDtlView.swift; sourceTree = "<group>"; };
 		105EB94B27E711B4009ADB25 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		105EB94D27E71243009ADB25 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		C50713AA27EAB916007573FA /* MyItemsHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsHistoryView.swift; sourceTree = "<group>"; };
 		C50713AC27EAB92B007573FA /* MyItemsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItemsAddView.swift; sourceTree = "<group>"; };
 		C50713AE27EAB9D6007573FA /* MyItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyItems.swift; sourceTree = "<group>"; };
+		C7856E9C4BB92A1AE134F497 /* Pods-RentToGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RentToGo.release.xcconfig"; path = "Target Support Files/Pods-RentToGo/Pods-RentToGo.release.xcconfig"; sourceTree = "<group>"; };
+		CAB9FCE09402A98CCA94F220 /* Pods_RentToGo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RentToGo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECE3363927E7E64000C9B0AD /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
 		ECE3363B27E7E69600C9B0AD /* CartHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHistoryView.swift; sourceTree = "<group>"; };
 		ECE3363D27E7F03B00C9B0AD /* RentalSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentalSummaryView.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AECE724E5D38E0DBF373E419 /* Pods_RentToGo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,16 @@
 			path = AccountView;
 			sourceTree = "<group>";
 		};
+		2D656EA48691042075C7820D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				002C34EEE235F936B88BAFB9 /* Pods-RentToGo.debug.xcconfig */,
+				C7856E9C4BB92A1AE134F497 /* Pods-RentToGo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AD2D238627EBFAAA004A780D /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +113,8 @@
 			children = (
 				AD2E231927E4F90700538B6E /* RentToGo */,
 				AD2E231827E4F90700538B6E /* Products */,
+				2D656EA48691042075C7820D /* Pods */,
+				F7D54221CF68D0F739F32048 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -180,6 +197,14 @@
 			path = CartView;
 			sourceTree = "<group>";
 		};
+		F7D54221CF68D0F739F32048 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAB9FCE09402A98CCA94F220 /* Pods_RentToGo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -187,9 +212,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD2E232527E4F90A00538B6E /* Build configuration list for PBXNativeTarget "RentToGo" */;
 			buildPhases = (
+				845144C60677CF3E21B47BC0 /* [CP] Check Pods Manifest.lock */,
 				AD2E231327E4F90700538B6E /* Sources */,
 				AD2E231427E4F90700538B6E /* Frameworks */,
 				AD2E231527E4F90700538B6E /* Resources */,
+				0A865CD0B31BCFAB9113D329 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,6 +271,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A865CD0B31BCFAB9113D329 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RentToGo/Pods-RentToGo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RentToGo/Pods-RentToGo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RentToGo/Pods-RentToGo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		845144C60677CF3E21B47BC0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RentToGo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AD2E231327E4F90700538B6E /* Sources */ = {
@@ -395,6 +464,7 @@
 		};
 		AD2E232627E4F90A00538B6E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002C34EEE235F936B88BAFB9 /* Pods-RentToGo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -425,6 +495,7 @@
 		};
 		AD2E232727E4F90A00538B6E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7856E9C4BB92A1AE134F497 /* Pods-RentToGo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
