@@ -29,12 +29,12 @@ struct RentToGoApp: App {
     init(){
         StripeAPI.defaultPublishableKey = "pk_test_51KeOQoLRE6j3B7vaxcTYB870BBGSPy7K6YeAZ4jhXnJl9w8D6VPMRcPRyDshfNOhQhrTNxbpss1wLh4abDUZlIFV00L8Dlk5fP"
         initFirebase()
-        ProductDao()
+        //ProductDao()
     }
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            //NavigationView{
                 switch sessionService.state{
                 case .loggedIn:
                     ContentView().environmentObject(sessionService)
@@ -44,7 +44,7 @@ struct RentToGoApp: App {
                      LoginView().navigationBarHidden(true)
                         .edgesIgnoringSafeArea([.top, .bottom])
                 }
-            }
+            //}
         }
     }
 }

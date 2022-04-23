@@ -37,7 +37,7 @@ struct PreSearchView: View {
                 .border(Color.gray)
                 .cornerRadius(15)
                 .padding(10)
-                .padding(.top, 80)
+                .padding(.top, 100)
                 .background(themeColor)
             
             
