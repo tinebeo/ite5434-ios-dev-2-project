@@ -109,19 +109,14 @@ struct RentOfTheDayView: View {
                 Spacer()
             }
             if self.viewModel.products.isEmpty {
-                Text("$XXX.XX").font(.system(size: 24)).padding(.leading, 10)
-
-                        } else {
-                            Text("$" + "\(String(format: "%.1f", self.viewModel.products[0].price))").font(.system(size: 24)).padding(.leading, 10)
-                            
-                        }
-            
-            if self.viewModel.products.isEmpty {
-                            Text("NAME")
-
-                        } else {
-                            Text(self.viewModel.products[0].name)
-                        }
+                Text("").font(.system(size: 24)).padding(.leading, 10)
+                Text("")
+                
+            } else {
+                Text("$" + "\(String(format: "%.1f", self.viewModel.products[0].price))").font(.system(size: 24)).padding(.leading, 10)
+                Text(self.viewModel.products[0].name)
+                
+            }
             
         }.onAppear(perform: {
             print(viewModel.products)
@@ -143,14 +138,27 @@ struct EssentialView: View {
     var body: some View {
         // Top Essentials
         VStack(alignment: .leading) {
+            
+            Text("Essentials").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
+            
             if (viewModel.products.isEmpty) {
                 EmptyView()
             } else {
-                List(viewModel.products) { product in
-                    HStack{
-                        Text("\(product.name) | \(product.category ?? "")").font(.system(size: 20)).padding(.leading, 10).padding(.top, 10)
-                        HomeHorizontalIconView(label: $label)
-                    }
+                ScrollView(.horizontal) {
+                    HStack {
+                        
+                        ForEach(3..<6) { i in
+                            VStack {
+                                NavigationLink(destination: ItemDetailsView(product: viewModel.products[i])) {
+                                    Image("photoPlaceholder").data(url: viewModel.products[i].imageUrl ?? "photoPlaceholder").resizable().scaledToFit().frame(width: 100.0, height: 150.0)
+                                        .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color.gray, lineWidth: 1))
+                                }
+                                
+                                Text(viewModel.products[i].name).font(.system(size: 14))
+                            }
+                        }
+                        
+                    }.padding(.leading, 10)
                 }
             }
             

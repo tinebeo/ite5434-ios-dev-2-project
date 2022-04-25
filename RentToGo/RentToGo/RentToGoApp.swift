@@ -34,7 +34,7 @@ struct RentToGoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            //NavigationView{
                 switch sessionService.state{
                 case .loggedIn:
                     ContentView().environmentObject(sessionService)
@@ -44,7 +44,7 @@ struct RentToGoApp: App {
                      LoginView().navigationBarHidden(true)
                         .edgesIgnoringSafeArea([.top, .bottom])
                 }
-            }
+            //}
         }
     }
 }
